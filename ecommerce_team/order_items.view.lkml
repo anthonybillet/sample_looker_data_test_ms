@@ -23,8 +23,16 @@ view: order_items {
     sql: ${TABLE}.inventory_item_id ;;
   }
   dimension: order_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.order_id ;;
+  }
+  dimension: orderid {
+    label: "Order Id"
+    description: "This is the correct Order ID to use"
+    synonyms: ["Order Number"]
+    type: number
+    sql: ${TABLE}.order_id + 10000 ;;
   }
   dimension: product_id {
     type: number
