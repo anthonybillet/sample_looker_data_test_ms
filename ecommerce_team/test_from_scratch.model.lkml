@@ -2,7 +2,7 @@ connection: "default_bigquery_connection"
 
 include: "/ecommerce_team/*.view.lkml"
 
-label: " Test From Scratch"
+label: " Test From Scratch_mp"
 
 explore: order_items {
   label: "From Scratch: Order Items "
