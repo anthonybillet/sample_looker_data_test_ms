@@ -35,6 +35,6 @@ view: taxi_trips_fact {
   measure: average_trip_distance {
     type: average
     value_format_name: decimal_2
-    sql: ${TABLE}.trip_distance ;;
+    sql: ${TABLE}.trip_distance * 100 ;;
   }
 }
