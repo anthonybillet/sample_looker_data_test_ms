@@ -36,4 +36,9 @@ explore: order_items {
     sql_on: ${distribution_centers.id} = ${inventory_items.product_distribution_center_id} ;;
     relationship: many_to_one
   }
+
+  join: derived_table {
+    type: cross
+    relationship: many_to_many
+  }
 }
