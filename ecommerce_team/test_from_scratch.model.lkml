@@ -42,3 +42,7 @@ explore: order_items {
     relationship: many_to_many
   }
 }
+
+explore: taxi_trips_fact {
+  label: "NYC Taxi Trips (10M+ Fact Table)"
+}
