@@ -46,3 +46,13 @@ explore: order_items {
 explore: taxi_trips_fact {
   label: "NYC Taxi Trips (10M+ Fact Table)"
 }
+explore: audited_revenue {
+  label: "Audited Financial Revenue"
+
+
+  join: audited_user {
+    type: left_outer
+    sql_on: ${audited_revenue.user_id} = ${audited_user.id} ;;
+    relationship: many_to_one
+  }
+}

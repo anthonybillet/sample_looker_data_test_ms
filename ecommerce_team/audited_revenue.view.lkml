@@ -31,7 +31,7 @@ view: audited_revenue {
   dimension: currency_code {
     type: string
     sql:
-      CASE ${users.country}
+      CASE ${audited_user.country}
         WHEN 'United States' THEN 'USD'
         WHEN 'United Kingdom' THEN 'GBP'
         WHEN 'Germany' THEN 'EUR'
@@ -56,7 +56,7 @@ view: audited_revenue {
     value_format: "#,##0.00"
     filters: [status: "Complete"]
     sql:
-      ${TABLE}.sale_price * CASE ${users.country}
+      ${TABLE}.sale_price * CASE ${audited_user.country}
         WHEN 'United Kingdom' THEN 0.79
         WHEN 'Germany' THEN 0.92
         WHEN 'Japan' THEN 150.25
