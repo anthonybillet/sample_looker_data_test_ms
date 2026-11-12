@@ -43,6 +43,11 @@ explore: order_items {
   }
 }
 
+access_grant: can_see_pii {
+  user_attribute: employee_clearance
+  allowed_values: ["secret", "top_secret"]
+}
+
 explore: taxi_trips_fact {
   label: "NYC Taxi Trips (10M+ Fact Table)"
 }

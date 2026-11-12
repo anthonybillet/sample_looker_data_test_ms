@@ -80,4 +80,10 @@ view: users {
     type: count
     drill_fields: [id, last_name, first_name, order_items.count]
   }
+  dimension: ssn_tax_id {
+    type: string
+    label: "SSN / Tax ID"
+    required_access_grants: [can_see_pii]
+    sql: CONCAT('***-**-', LPAD(CAST(MOD(ABS(FARM_FINGERPRINT(CAST(${TABLE}.id AS STRING))), 10000) AS STRING), 4, '0')) ;;
+  }
 }
