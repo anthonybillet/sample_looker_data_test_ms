@@ -56,3 +56,18 @@ explore: audited_revenue {
     relationship: many_to_one
   }
 }
+
+
+datagroup: google_trends_incremental_dg {
+  label: "Google Trends Daily Incremental"
+  description: "Triggers incremental PDT build when a new daily refresh_date partition arrives."
+  sql_trigger:
+    SELECT MAX(refresh_date)
+    FROM `bigquery-public-data.google_trends.top_terms`
+    WHERE refresh_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) ;;
+  max_cache_age: "24 hours"
+}
+
+explore: google_trends_pdt {
+  label: "Google Trends Top Terms (Incremental PDT)"
+}
