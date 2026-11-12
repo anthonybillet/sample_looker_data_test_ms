@@ -27,7 +27,13 @@ view: users {
   }
   dimension: email {
     type: string
-    sql: ${TABLE}.email ;;
+    label: "Customer Email"
+    sql:
+      {% if _user_attributes['can_view_pii'] == 'yes' %}
+        ${TABLE}.email
+      {% else %}
+        CONCAT(LEFT(${TABLE}.email, 3), '***@***.com')
+      {% endif %} ;;
   }
   dimension: first_name {
     type: string
