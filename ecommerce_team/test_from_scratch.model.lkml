@@ -41,7 +41,14 @@ explore: order_items {
     type: cross
     relationship: many_to_many
   }
+
+  access_filter: {
+    field: users.country
+    user_attribute: region
+  }
+
 }
+
 
 access_grant: can_see_pii {
   user_attribute: employee_clearance
