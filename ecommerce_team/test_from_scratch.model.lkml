@@ -41,6 +41,10 @@ explore: order_items {
     type: cross
     relationship: many_to_many
   }
+  access_filter: {
+    field: users.country
+    user_attribute: region
+  }
 }
 
 explore: taxi_trips_fact {
