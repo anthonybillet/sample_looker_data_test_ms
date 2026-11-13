@@ -16,6 +16,10 @@ view: natality {
     type: yesno
     sql: ${TABLE}.is_male ;;
   }
+  dimension: lmp {
+    type: string
+    sql: ${TABLE}.lmp ;;
+  }
 
   measure: total_births {
     type: count
