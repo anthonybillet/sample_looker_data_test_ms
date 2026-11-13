@@ -16,7 +16,7 @@ view: google_trends_pdt {
         COUNT(*) AS record_count
       FROM `bigquery-public-data.google_trends.top_terms`
       WHERE refresh_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
-        AND {% incrementcondition %} refresh_date {% endincrementcondition %}
+      AND {% incrementcondition %} TIMESTAMP(refresh_date) {% endincrementcondition %}
       GROUP BY 1, 2, 3, 4, 5
     ;;
   }
