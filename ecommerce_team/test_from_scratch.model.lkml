@@ -88,3 +88,23 @@ explore: live_streaming_orders {
   label: "Live Streaming Orders (Real-Time)"
   persist_for: "0 seconds"
 }
+
+datagroup: natality_daily_datagroup {
+  sql_trigger: SELECT CURRENT_DATE() ;;
+  max_cache_age: "24 hours"
+}
+
+explore: natality {
+  # Pre-computed Aggregate Table for Executive Rollups
+  aggregate_table: rollup_births_by_year_state {
+    query: {
+      dimensions: [year, state, is_male]
+      measures: [total_births, average_weight_pounds]
+      timezone: "UTC"
+    }
+
+    materialization: {
+      datagroup_trigger: natality_daily_datagroup
+    }
+  }
+}
