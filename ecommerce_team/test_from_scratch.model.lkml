@@ -83,3 +83,8 @@ datagroup: google_trends_incremental_dg {
 explore: google_trends_pdt {
   label: "Google Trends Top Terms (Incremental PDT)"
 }
+
+explore: live_streaming_orders {
+  label: "Live Streaming Orders (Real-Time)"
+  persist_for: "0 seconds"
+}
