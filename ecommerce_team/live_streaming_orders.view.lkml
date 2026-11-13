@@ -1,5 +1,5 @@
 view: live_streaming_orders {
-  sql_table_name: `cnu-msi-manojkumarthokala1.edh.live_streaming_orders` ;;
+  sql_table_name: `edh-rfp-poc-0793.looker_scratch.live_streaming_orders` ;;
 
   dimension: order_id {
     primary_key: yes
