@@ -67,6 +67,9 @@ view: order_items {
     drill_fields: [detail*]
   }
   measure: total_sales {
+    label: "Total Sales"
+    description: "Total gross revenue from all order items before returns or cancellations."
+    synonyms: ["gross revenue", "total gross revenue", "revenue"]
     value_format_name: usd
     type: sum
     sql: ${sale_price} ;;
@@ -81,6 +84,13 @@ view: order_items {
     value_format_name: percent_1
     type: number
     sql: 1.0*${total_refunded_sales} / NULLIF(${total_sales},0) ;;
+  }
+  measure: order_count {
+    label: "Order Count"
+    description: "Distinct count of customer orders."
+    synonyms: ["number of orders", "total orders"]
+    type: count_distinct
+    sql: ${orderid} ;;
   }
 
   # ----- Sets of fields for drilling ------
