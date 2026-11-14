@@ -105,3 +105,8 @@ explore: natality {
     }
   }
 }
+
+explore: operating_margin_fact {
+  label: "Operating Margin & RCA Explore"
+  description: "Weekly operating margin performance across regions, shipping methods, products, and channels."
+}
