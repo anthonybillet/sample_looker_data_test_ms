@@ -1,5 +1,5 @@
 view: quarterly_perf_test {
-  sql_table_name: `looker-private-demo.looker_scratch.quarterly_perf_test`
+  sql_table_name: `looker_scratch.quarterly_perf_test`
     ;;
 
   dimension: quarter {
@@ -9,13 +9,13 @@ view: quarterly_perf_test {
   }
 
   dimension: region {
-    description: "The geographic region."
+    description: "The geographic sales region."
     type: string
     sql: ${TABLE}.region ;;
   }
 
   dimension: product_line {
-    description: "The product line."
+    description: "The product category."
     type: string
     sql: ${TABLE}.product_line ;;
   }
