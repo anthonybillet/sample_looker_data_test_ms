@@ -124,3 +124,7 @@ explore: fact_orders_test {
 explore: AI_Bq_table_test {
   label: "AI BigQuery Table Test"
 }
+
+explore: quarterly_perf_test {
+  label: "Quarterly Performance Test"
+}
