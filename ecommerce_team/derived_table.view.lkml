@@ -1,4 +1,3 @@
-
 view: derived_table {
   derived_table: {
     sql: {% raw %} -- generate a query combining regional tables (UNION ALL), reshaping categories (PIVOT), and cleaning strings (REGEXP_EXTRACT). Paste and run in Looker Develop > SQL Runner.
