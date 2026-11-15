@@ -112,11 +112,13 @@ explore: operating_margin_fact {
 }
 
 explore: fact_orders_test {
-  label: "Fact and Dim Orders"
-  description: "Joining Fact and Dim Orders"
   join: dim_customers_test {
     type: left_outer
     sql_on: ${fact_orders_test.customer_id} = ${dim_customers_test.customer_id} ;;
     relationship: many_to_one
   }
+}
+
+explore: sales_conversational_test {
+  label: "Sales Conversational Test"
 }
