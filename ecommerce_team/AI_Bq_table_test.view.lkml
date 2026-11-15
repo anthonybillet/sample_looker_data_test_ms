@@ -45,4 +45,18 @@ view: AI_Bq_table_test {
     description: "Total number of test records."
     drill_fields: [id, test_name, category]
   }
+
+  measure: average_score {
+    type: average
+    description: "Average evaluation benchmark score."
+    sql: ${score} ;;
+    value_format_name: decimal_2
+  }
+
+  measure: max_score {
+    type: max
+    description: "Highest evaluation benchmark score."
+    sql: ${score} ;;
+    value_format_name: decimal_2
+  }
 }

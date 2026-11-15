@@ -1,6 +1,7 @@
 connection: "default_bigquery_connection"
 
 include: "/ecommerce_team/*.view.lkml"
+include: "/ecommerce_team/*.dashboard.lookml"
 
 label: " Test From Scratch"
 
