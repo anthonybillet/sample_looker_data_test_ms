@@ -126,3 +126,7 @@ explore: sales_conversational_test {
 explore: exec_kpi_monthly_test {
   label: "Executive KPI Dashboard"
 }
+
+explore: AI_Bq_table_test {
+  label: "AI BigQuery Table Test"
+}
