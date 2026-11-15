@@ -110,3 +110,13 @@ explore: operating_margin_fact {
   label: "Operating Margin & RCA Explore"
   description: "Weekly operating margin performance across regions, shipping methods, products, and channels."
 }
+
+explore: fact_orders_test {
+  label: "Fact and Dim Orders"
+  description: "Joining Fact and Dim Orders"
+  join: dim_customers_test {
+    type: left_outer
+    sql_on: ${fact_orders_test.customer_id} = ${dim_customers_test.customer_id} ;;
+    relationship: many_to_one
+  }
+}
