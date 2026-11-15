@@ -120,10 +120,6 @@ explore: fact_orders_test {
   }
 }
 
-explore: sales_conversational_test_2 {
-  from: sales_conversational_test_2
-  label: "Sales Conversational Test"
-}
 
 explore: AI_Bq_table_test {
   label: "AI BigQuery Table Test"
