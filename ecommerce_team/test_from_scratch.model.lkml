@@ -120,12 +120,9 @@ explore: fact_orders_test {
   }
 }
 
-explore: sales_conversational_test {
+explore: sales_conversational_test_2 {
+  from: sales_conversational_test_2
   label: "Sales Conversational Test"
-}
-
-explore: exec_kpi_monthly_test {
-  label: "Executive KPI Dashboard"
 }
 
 explore: AI_Bq_table_test {
