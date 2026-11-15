@@ -12,15 +12,9 @@ view: sales_conversational_test {
 
   dimension_group: order {
     type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
+    datatype: date
+    timeframes: [raw, date, week, month, quarter, year]
+    convert_tz: no
     description: "The date the order was placed."
     sql: ${TABLE}.order_date ;;
   }
