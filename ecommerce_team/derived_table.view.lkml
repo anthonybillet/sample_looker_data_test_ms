@@ -61,8 +61,8 @@ view: derived_table {
   set: detail {
     fields: [
         state,
-	electronics,
-	furniture
+  electronics,
+  furniture
     ]
   }
 }
