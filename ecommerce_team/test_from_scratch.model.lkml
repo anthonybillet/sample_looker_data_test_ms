@@ -122,3 +122,7 @@ explore: fact_orders_test {
 explore: sales_conversational_test {
   label: "Sales Conversational Test"
 }
+
+explore: exec_kpi_monthly_test {
+  label: "Executive KPI Dashboard"
+}
