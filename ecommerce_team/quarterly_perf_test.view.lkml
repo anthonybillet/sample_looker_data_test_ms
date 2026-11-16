@@ -58,4 +58,10 @@ view: quarterly_perf_test {
     sql: sum(${revenue}) / NULLIF(sum(${target_revenue}), 0) ;;
     value_format_name: percent_1
   }
+
+  measure: average_revenue {
+    type: average
+    sql: ${revenue} ;;
+    value_format_name: usd
+  }
 }
