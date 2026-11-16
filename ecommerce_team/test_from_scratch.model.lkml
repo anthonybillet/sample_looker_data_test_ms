@@ -120,7 +120,6 @@ explore: fact_orders_test {
   }
 }
 
-
 explore: AI_Bq_table_test {
   label: "AI BigQuery Table Test"
 }
@@ -133,3 +132,4 @@ explore: revenue_transactions {
   label: "Revenue Analytics"
   description: "Ad-hoc revenue performance by date, region, and customer segment"
 }
+
