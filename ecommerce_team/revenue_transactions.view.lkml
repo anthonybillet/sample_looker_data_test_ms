@@ -54,4 +54,11 @@ view: revenue_transactions {
     description: "Total number of units sold"
     sql: ${TABLE}.units_sold ;;
   }
+  measure: net_margin_pct {
+    type: number
+    label: "Net Margin %"
+    description: "Net revenue divided by total gross revenue after discounts"
+    value_format_name: percent_1
+    sql: SAFE_DIVIDE(${net_revenue}, ${total_revenue}) ;;
+  }
 }
