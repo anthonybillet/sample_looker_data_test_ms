@@ -132,4 +132,3 @@ explore: revenue_transactions {
   label: "Revenue Analytics"
   description: "Ad-hoc revenue performance by date, region, and customer segment"
 }
-
