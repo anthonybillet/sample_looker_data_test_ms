@@ -132,3 +132,8 @@ explore: revenue_transactions {
   label: "Revenue Analytics"
   description: "Ad-hoc revenue performance by date, region, and customer segment"
 }
+
+explore: revenue_forecast_bqml {
+  label: "Revenue Predictive Forecast (BQML)"
+  description: "Real-time BigQuery ML ARIMA_PLUS revenue forecasting without TabPy"
+}
