@@ -1,6 +1,7 @@
 connection: "default_bigquery_connection"
 
 include: "/ecommerce_team/*.view.lkml"
+include: "/ecommerce_team/*.dashboard.lookml"
 
 label: " Test From Scratch_mp"
 
@@ -8,9 +9,6 @@ explore: order_items {
   label: "From Scratch: Order Items "
   # persist_for: "2 weeks"
   # sql_always_where: ${created_date} BETWEEN CURRENT_DATE() AND DATE('2022-01-01') ;;
-  always_filter: {
-    filters: [order_items.created_date: "last 30 days"]
-  }
 
   join: users {
     type: left_outer
@@ -36,4 +34,106 @@ explore: order_items {
     sql_on: ${distribution_centers.id} = ${inventory_items.product_distribution_center_id} ;;
     relationship: many_to_one
   }
+
+  join: derived_table {
+    type: cross
+    relationship: many_to_many
+  }
+
+  access_filter: {
+    field: users.country
+    user_attribute: region
+  }
+
+}
+
+
+access_grant: can_see_pii {
+  user_attribute: employee_clearance
+  allowed_values: ["secret", "top_secret"]
+}
+
+explore: taxi_trips_fact {
+  label: "NYC Taxi Trips (10M+ Fact Table)"
+}
+explore: audited_revenue {
+  label: "Audited Financial Revenue"
+
+
+  join: audited_user {
+    type: left_outer
+    sql_on: ${audited_revenue.user_id} = ${audited_user.id} ;;
+    relationship: many_to_one
+  }
+}
+
+
+datagroup: google_trends_incremental_dg {
+  label: "Google Trends Daily Incremental"
+  description: "Triggers incremental PDT build when a new daily refresh_date partition arrives."
+  sql_trigger:
+    SELECT MAX(refresh_date)
+    FROM `bigquery-public-data.google_trends.top_terms`
+    WHERE refresh_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) ;;
+  max_cache_age: "24 hours"
+}
+
+explore: google_trends_pdt {
+  label: "Google Trends Top Terms (Incremental PDT)"
+}
+
+explore: live_streaming_orders {
+  label: "Live Streaming Orders (Real-Time)"
+  persist_for: "0 seconds"
+}
+
+datagroup: natality_daily_datagroup {
+  sql_trigger: SELECT CURRENT_DATE() ;;
+  max_cache_age: "24 hours"
+}
+
+explore: natality {
+  # Pre-computed Aggregate Table for Executive Rollups
+  aggregate_table: rollup_births_by_year_state {
+    query: {
+      dimensions: [year, state, is_male]
+      measures: [total_births, average_weight_pounds]
+      timezone: "UTC"
+    }
+
+    materialization: {
+      datagroup_trigger: natality_daily_datagroup
+    }
+  }
+}
+
+explore: operating_margin_fact {
+  label: "Operating Margin & RCA Explore"
+  description: "Weekly operating margin performance across regions, shipping methods, products, and channels."
+}
+
+explore: fact_orders_test {
+  join: dim_customers_test {
+    type: left_outer
+    sql_on: ${fact_orders_test.customer_id} = ${dim_customers_test.customer_id} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: AI_Bq_table_test {
+  label: "AI BigQuery Table Test"
+}
+
+explore: quarterly_perf_test {
+  label: "Quarterly Performance Test"
+}
+
+explore: revenue_transactions {
+  label: "Revenue Analytics"
+  description: "Ad-hoc revenue performance by date, region, and customer segment"
+}
+
+explore: revenue_forecast_bqml {
+  label: "Revenue Predictive Forecast (BQML)"
+  description: "Real-time BigQuery ML ARIMA_PLUS revenue forecasting without TabPy"
 }
