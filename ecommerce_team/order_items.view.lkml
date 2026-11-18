@@ -83,6 +83,13 @@ view: order_items {
     sql: 1.0*${total_refunded_sales} / NULLIF(${total_sales},0) ;;
   }
 
+  dimension: brand_total_sales {
+    description: "Total sales across the entire brand, applied to each row"
+    value_format_name: usd
+    type: number
+    sql: SUM(${sale_price}) OVER (PARTITION BY ${products.brand}) ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
