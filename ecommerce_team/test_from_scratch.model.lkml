@@ -40,6 +40,14 @@ explore: order_items {
     relationship: many_to_many
   }
 
+  join: marcinp_brand_index {
+    type: left_outer
+    # Many products map to one brand row in marcinp_brand_index
+    relationship: many_to_one
+    # References products.brand, which was already joined on line 26
+    sql_on: ${products.brand} = ${marcinp_brand_index.brand} ;;
+  }
+
   access_filter: {
     field: users.country
     user_attribute: region
